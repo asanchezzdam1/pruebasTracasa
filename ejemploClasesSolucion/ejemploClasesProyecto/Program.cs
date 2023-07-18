@@ -40,7 +40,7 @@ namespace ejemploClasesProyecto
 
             foreach (var empleado in lista)
             {
-                empleado.calcularAumentoDeSalario();
+                 empleado.calcularAumentoDeSalario();
             }
         }
     }
