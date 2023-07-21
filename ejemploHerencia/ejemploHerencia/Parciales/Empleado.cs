@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ejemploHerencia
+namespace EjemploHerencia
 {
     public partial class Empleado
     {
-        public string? telefono { get; set; }
-        public Empleado jefe { get; set; }
+        public string? Telefono { get; set; }
+
+        public Empleado Jefe { get; set; }
     }
 }

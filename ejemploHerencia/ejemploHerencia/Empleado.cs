@@ -17,9 +17,13 @@ namespace ejemploHerencia
 
         //}
         protected double diasVacaciones;
+        public virtual void CalculoVacaciones()
+        {
+            diasVacaciones += 10;
+        }
         public override string ToString()
         {
-            return "El empleado pertenece al grupo: Empleado y su nombre es: " + nombre;
+            return "El empleado pertenece al grupo: Empleado y su nombre es: " + nombre + ". Y tiene " + diasVacaciones + " dias de vacaciones.";
         }
     }
 }
