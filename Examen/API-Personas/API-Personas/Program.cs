@@ -1,8 +1,4 @@
-using Context;
-using Microsoft.EntityFrameworkCore;
-using Repositorios;
-
-namespace API_PERSONAS
+namespace API_Personas
 {
     public class Program
     {
@@ -11,12 +7,6 @@ namespace API_PERSONAS
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddDbContext<ContextPersonas>(options =>
-            {
-                options.UseSqlServer(builder.Configuration["ConnectionStrings:ConexionDatos"]);
-            });
-            builder.Services.AddTransient<IRepositorioPersonas, RepositorioPersonas>();
-            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -35,6 +25,7 @@ namespace API_PERSONAS
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+
 
             app.MapControllers();
 
