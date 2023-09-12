@@ -22,14 +22,14 @@ export class NuevaPersonaComponent {
           Validators.pattern('^[a-zA-Z]{1,50}$'),
         ],
       ],
-      // telefono: [
-      //   '',
-      //   [
-      //     Validators.required,
-      //     Validators.maxLength(25),
+      telefono: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(25),
       //     Validators.pattern('^[+]{1}d{1,3}d{1,15}$'),
-      //   ],
-      // ],
+        ],
+      ],
       fecha: [
         '',
         [
