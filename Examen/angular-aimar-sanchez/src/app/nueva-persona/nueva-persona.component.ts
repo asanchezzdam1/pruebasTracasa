@@ -55,7 +55,7 @@ export class NuevaPersonaComponent {
 
     };
     this.postRegistro(registroDTO);
-    // this.router.navigate(['/lista-personas']);
+    this.router.navigate(['/lista-personas']);
   }
 
   //Realiza el POST enviando el registro rellenado

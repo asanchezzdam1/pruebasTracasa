@@ -1,8 +1,6 @@
 <div class="container mt-3">
     <form [formGroup]="myForm" (ngSubmit)="rellenarRegistro(myForm)" novalidate>
-        <div class="alert alert-danger" role="alert">
-            {{resultRegistro}}
-          </div>
+
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre de la persona</label>
             <input formControlName="nombre" type="text" class="form-control" id="nombre" aria-describedby="nombreHelp">
