@@ -1,5 +1,8 @@
 <div class="container mt-3">
-    <form [formGroup]="myForm">
+    <form [formGroup]="myForm" (ngSubmit)="rellenarRegistro(myForm)" novalidate>
+        <div class="alert alert-danger" role="alert">
+            {{resultRegistro}}
+          </div>
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre de la persona</label>
             <input formControlName="nombre" type="text" class="form-control" id="nombre" aria-describedby="nombreHelp">
@@ -19,7 +22,7 @@
         </div>
         <div class="text-danger mb-3" *ngIf="myForm.get('telefono')?.errors && myForm.get('telefono')?.dirty">
             <p *ngIf="myForm.get('telefono')?.hasError('required')"><small>Campo requerido</small></p>
-            <p *ngIf="myForm.get('telefono')?.hasError('pattern')"><small>Formato incorrecto</small></p>
+            <p *ngIf="myForm.get('telefono')?.hasError('pattern')"><small>Formato incorrecto. Ejemplo: +(prefijo pais)-(numero de teléfono)</small></p>
             <p *ngIf="myForm.get('telefono')?.hasError('maxLength')"><small>El numero de teléfono no puede tener mas de
                     25 caracteres</small></p>
         </div>

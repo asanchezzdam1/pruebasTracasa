@@ -31,6 +31,13 @@ namespace API_PERSONAS
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.UseCors("AllowAll");
+            app.UseCors(policy =>
+            {
+                policy.WithOrigins("http://localhost:4200") // Permite solicitudes desde esta URL
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+            });
 
             app.UseHttpsRedirection();
 

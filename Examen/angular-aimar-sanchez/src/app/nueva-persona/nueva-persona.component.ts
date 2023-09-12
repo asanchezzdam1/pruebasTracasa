@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { IPersona } from './IPersona';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { personaService } from './personaService';
 
 @Component({
   selector: 'app-nueva-persona',
@@ -11,8 +15,10 @@ export class NuevaPersonaComponent {
   telefono: string = '';
   fecha: string = '';
   myForm!: FormGroup;
+  sub!: Subscription;
+  resultRegistro: string="";
 
-  constructor(public fb: FormBuilder) {
+  constructor(public fb: FormBuilder, public router: Router,  private personaService: personaService) {
     this.myForm = this.fb.group({
       nombre: [
         '',
@@ -27,7 +33,7 @@ export class NuevaPersonaComponent {
         [
           Validators.required,
           Validators.maxLength(25),
-      //     Validators.pattern('^[+]{1}d{1,3}d{1,15}$'),
+          Validators.pattern(/^\+[0-9]{1,3}-[0-9]{3,14}$/),
         ],
       ],
       fecha: [
@@ -38,6 +44,26 @@ export class NuevaPersonaComponent {
           Validators.min(new Date(new Date().getFullYear() - 150).getTime()),
         ],
       ],
+    });
+  }
+  //Rellena con los datos del html un registro DTO
+  rellenarRegistro(myForm: FormGroup): void {
+    const registroDTO: IPersona = {
+      nombre: myForm.value.nombre,
+      telefono: myForm.value.telefono,
+      fechaNacimiento: myForm.value.fecha
+
+    };
+    this.postRegistro(registroDTO);
+    // this.router.navigate(['/lista-personas']);
+  }
+
+  //Realiza el POST enviando el registro rellenado
+  postRegistro(registroDTO: IPersona): void {
+    this.personaService.anadirPersona(registroDTO).subscribe({
+      next: (registro) => {
+        this.resultRegistro = registro;
+      },
     });
   }
 }
