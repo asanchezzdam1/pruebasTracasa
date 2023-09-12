@@ -1,1 +1,40 @@
-<p>nueva-persona works!</p>
+<div class="container mt-3">
+    <form [formGroup]="myForm">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre de la persona</label>
+            <input formControlName="nombre" type="text" class="form-control" id="nombre" aria-describedby="nombreHelp">
+            <div id="nombreHelp" class="form-text">Nombre de la persona a registrar.</div>
+        </div>
+        <div class="text-danger mb-3" *ngIf="myForm.get('nombre')?.errors && myForm.get('nombre')?.dirty">
+            <p *ngIf="myForm.get('nombre')?.hasError('required')"><small>Campo requerido</small></p>
+            <p *ngIf="myForm.get('nombre')?.hasError('pattern')"><small>Formato incorrecto</small></p>
+            <p *ngIf="myForm.get('nombre')?.hasError('maxLength')"><small>El nombre no puede tener mas de 50
+                    caracteres</small></p>
+        </div>
+        <div class="mb-3">
+            <label for="telefono" class="form-label">Numero de teléfono</label>
+            <input formControlName="telefono" type="text" class="form-control bi bi-pencil" id="telefono"
+                aria-describedby="telefonoHelp">
+            <div id="telefonoHelp" class="form-text">Numero de teléfono.</div>
+        </div>
+        <div class="text-danger mb-3" *ngIf="myForm.get('telefono')?.errors && myForm.get('telefono')?.dirty">
+            <p *ngIf="myForm.get('telefono')?.hasError('required')"><small>Campo requerido</small></p>
+            <p *ngIf="myForm.get('telefono')?.hasError('pattern')"><small>Formato incorrecto</small></p>
+            <p *ngIf="myForm.get('telefono')?.hasError('maxLength')"><small>El numero de teléfono no puede tener mas de
+                    25 caracteres</small></p>
+        </div>
+        <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha de nacimiento</label>
+            <input formControlName="fecha" type="date" class="form-control" id="fecha" aria-describedby="fechaHelp">
+            <div id="fechaHelp" class="form-text">Fecha de nacimiento de la persona a registar</div>
+        </div>
+        <div class="text-danger" *ngIf="myForm.get('fecha')?.errors && myForm.get('fecha')?.dirty">
+            <p *ngIf="myForm.get('fecha')?.hasError('required')"><small>Campo requerido</small></p>
+            <p *ngIf="myForm.get('fecha')?.hasError('pattern')"><small>Formato incorreto</small></p>
+            <p *ngIf="myForm.get('fecha')?.hasError('max')"><small>Tienes que tener mas de 14 años para
+                    registrarte.</small></p>
+            <p *ngIf="myForm.get('fecha')?.hasError('min')"><small>No puedes tener mas de 150 años.</small></p>
+        </div>
+        <button [disabled]="myForm.invalid" type="submit" class="btn btn-outline-primary">Añadir persona</button>
+    </form>
+</div>

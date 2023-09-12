@@ -8,6 +8,7 @@ namespace EntidadesDTO
 {
     public class PersonasVer
     {
+        public Guid id { get; set; }
         public string nombre { get; set; }
 
         public DateTime fechaNacimiento { get; set; }

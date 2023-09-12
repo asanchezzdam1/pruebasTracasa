@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ListadoPersonasComponent } from './listado-personas/listado-personas.component';
@@ -24,7 +25,7 @@ const appRoutes: Routes = [
     NuevaPersonaComponent,
     InicioComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(appRoutes)], 
+  imports: [BrowserModule, RouterModule.forRoot(appRoutes), FormsModule, ReactiveFormsModule], 
   providers: [],
   bootstrap: [AppComponent],
 })
