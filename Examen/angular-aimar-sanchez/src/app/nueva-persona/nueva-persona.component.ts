@@ -19,7 +19,7 @@ export class NuevaPersonaComponent {
   sub!: Subscription;
   resultRegistro: string="";
   personas!:IPersona[];
-
+   
   constructor(public fb: FormBuilder, public router: Router,  private personaService: personaService, public listadoPersonasService:listadoPersonasService) {
     this.myForm = this.fb.group({
       nombre: [

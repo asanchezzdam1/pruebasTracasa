@@ -8,6 +8,7 @@ import { IPersona } from './IPersona';
   templateUrl: './listado-personas.component.html',
   styleUrls: ['./listado-personas.component.css'],
 })
+    
 export class ListadoPersonasComponent implements OnInit, OnDestroy, OnChanges{
   errorMessage: string = '';
   sub!: Subscription;
