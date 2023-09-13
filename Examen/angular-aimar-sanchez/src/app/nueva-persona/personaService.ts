@@ -18,4 +18,4 @@ export class personaService {
     anadirPersona(registro: IPersona): Observable<any> {
       return this.http.post(this.anadirPersonaPOST, registro);
     }
-  }
+  } 
