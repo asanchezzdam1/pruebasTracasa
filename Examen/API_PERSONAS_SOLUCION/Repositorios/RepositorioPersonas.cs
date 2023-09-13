@@ -71,15 +71,14 @@ namespace Repositorios
         // Calcular Edad Persona
         private int CalcularEdad(DateTime fechaNacimiento)
         {
-            DateTime hoy = DateTime.Today;
-            int edad = hoy.Year - fechaNacimiento.Year;
+            // Obtenemos la fecha actual
+            DateTime fechaActual = DateTime.Now;
 
-            if (fechaNacimiento > hoy.AddYears(-edad))
-            {
-                edad--;
-            }
+            // Calculamos la diferencia de fechas
+            TimeSpan diferenciaFechas = fechaActual - fechaNacimiento;
 
-            return edad;
+            // Devolvemos los años
+            return diferenciaFechas.Days / 365;
         }
 
     }
